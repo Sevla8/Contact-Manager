@@ -61,10 +61,9 @@ function removeContact(Contact) {
 	console.log("Le contact a bien été supprimé.");
 }
 
-let quit = false;
 let choice = "";
 console.log("Bienvenue dans le gestionnaire des contacts !");
-while (!quit) {
+while (choice !== "5")  {
 	console.log("1 : Lister les contacts");
 	console.log("2 : Ajouter un contact");
 	console.log("3 : Modifier un contact");
@@ -73,18 +72,27 @@ while (!quit) {
 
 	choice = prompt("Choisissez une option :");
 
-	if (choice === "1")
-		displayContacts();
-	else if (choice === "2")
-		addContact();
-	else if (choice == "3" && contacts.length !== 0)
-		updateContact();
-	else if (choice === "4" && contacts.length !== 0)
-		removeContact();
-	else if (choice === "5")
-		quit = true;
-	else 
-		console.log("Veuillez choisir une option valide svp.")
+	switch(choice) {
+		case "1":
+			displayContacts();
+			break;
+		case "2":
+			addContact();
+			break;
+		case "3":
+			if (contacts.length !== 0)
+				updateContact();
+			break;
+		case "4":
+			if (contacts.length !== 0)
+				removeContact();
+			break;
+		case "5":
+			console.log("Au revoir !");
+			break;
+		default:
+			console.log("Veuillez choisir une option valide svp.");
+			break;
+	}
 	console.log("");
 }
-console.log("Au revoir !");
